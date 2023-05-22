@@ -1,0 +1,41 @@
+.description {
+    margin: 20px 0 7px;
+    padding: 24px;
+    width: 100%;
+    min-height: 548px;
+    background-color: #fff;
+    border-radius: 12px;
+    p {
+        font-size: 16px;
+        margin-bottom: 20px;
+        line-height: 20px;
+        li {
+            font-size: 16px;
+        }
+    }
+    b {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    ul {
+        margin: 20px 0;
+    }
+    li {
+        font-size: 16px;
+        line-height: 22px;
+        position: relative;
+        padding-left: 15px;
+        &::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #000;
+            position: absolute;
+            top: 10px;
+            left: 0;
+
+        }
+    }
+}

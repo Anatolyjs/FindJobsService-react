@@ -1,0 +1,42 @@
+.vacancy {
+    width: 100%;
+    background-color: #fff;
+    padding: 22px 24px 22px;
+    border: 1px solid #EAEBED;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.body {
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #232134;
+}
+.point {
+    background-color: #7B7C88;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin: 0 14px;
+}
+.name {
+    font-weight: 600;
+    color: #5E96FC;
+    font-size: 20px;
+    line-height: 24px;
+    padding-right: 5px;
+}
+.salary {
+    color: #232134;
+    font-weight: 600;
+    font-size: 16px;
+}

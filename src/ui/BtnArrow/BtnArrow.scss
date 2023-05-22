@@ -1,0 +1,30 @@
+.btnArrowNext {
+    position: relative;
+    width: 100%;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid #7B7C88;
+        border-right: 2px solid #7B7C88;
+        transform: translate(-55%, -50%) rotate(45deg);
+    }
+}
+.btnArrowPrev {
+    position: relative;
+    width: 100%;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 7px;
+        height: 7px;
+        border-top: 2px solid #7B7C88;
+        border-right: 2px solid #7B7C88;
+        transform: translate(-35%, -50%) rotate(-135deg);
+    }
+}

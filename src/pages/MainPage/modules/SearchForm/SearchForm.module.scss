@@ -1,0 +1,27 @@
+.form {
+    width: 100%;
+    background-color: #fff;
+    padding: 8px 12px;
+    border: 1px solid #EAEBED;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    input {
+        font-size: 14px;
+        line-height: 21px;
+        margin-left: 8px;
+        width: 100%;
+        &::placeholder {
+            color: #ACADB9;
+        }
+    }
+}
+.button {
+    height: 32px;
+    width: 83px;
+    border-radius: 8px;
+    background-color: #5E96FC;
+    color: #FFF;
+    font-weight: 500;
+}

@@ -24,10 +24,10 @@ export const Filters = ({onFilterApplied, clearAll, setSelectedOption, selectedO
         <div className={styles.salary}>
           <h3 className={styles.itemTitle}>Оклад</h3>
           <div className={styles.inputMin}>
-            <SalaryInput isPaymentFrom={true} payment={paymentFrom} setPayment={setPaymentFrom}/>
+            <SalaryInput dataElem='salary-from-input' isPaymentFrom={true} payment={paymentFrom} setPayment={setPaymentFrom}/>
           </div>
           <div className={styles.inputMax}>
-            <SalaryInput isPaymentFrom={false} payment={paymentTo} setPayment={setPaymentTo}/>
+            <SalaryInput dataElem='salary-to-input' isPaymentFrom={false} payment={paymentTo} setPayment={setPaymentTo}/>
           </div>
         </div>
         <button onClick={onButtonClick} className={styles.button}>Применить</button>

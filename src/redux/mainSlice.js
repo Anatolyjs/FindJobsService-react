@@ -106,7 +106,7 @@ const toolkitSlice = createSlice({
         },
         [fetchDefaultData.fulfilled]: (state, action) => {
             if (state.favorite.length) {
-                state.vacancies = action.payload.vacancies.map((vacancy) => {
+                state.vacancies = action.payload.vacancies.objects.map((vacancy) => {
                     state.favorite.forEach((favoriteVacancy) => {
                         if (vacancy.id === favoriteVacancy.id) {
                             vacancy.isFavorite = true;
@@ -115,10 +115,11 @@ const toolkitSlice = createSlice({
                     return vacancy;
                 })
             } else {
-                state.vacancies = action.payload.vacancies;
+                state.vacancies = action.payload.vacancies.objects;
             }
             state.catalogues = action.payload.catalogues;
             state.isLoading = false;
+            state.totalVacancies = action.payload.vacancies.total;
         },
         [fetchVacancies.pending]: (state) => {
             state.isLoading = true;

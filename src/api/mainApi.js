@@ -47,6 +47,7 @@ export const getVacancies = async (params, rejectedWithValue) => {
   }
 
   const queryString = `published=1&page=${page}&count=${pageSize}${paymentFrom && `&payment_from=${paymentFrom}`}${paymentTo && `&payment_to=${paymentTo}`}${noAgreement && `&no_agreement=${noAgreement}`}${keyword && `&keyword=${keyword}`}${catalog && `&catalogues=${catalog}`}`;
+
   try {
     const result = await instance.get(`vacancies/?${queryString}`);
 
@@ -93,11 +94,10 @@ export const getDefaultData = async (params, rejectedWithValue) => {
   const cataloguesResult = instance.get("catalogues");
   const vacanciesResult = instance.get(`vacancies/?${queryString}`);
 
-
   await Promise.all([cataloguesResult, vacanciesResult])
     .then((values) => {
       catalogues = values[0].data;
-      vacancies = values[1].data.objects
+      vacancies = values[1].data
     }, (err) => {
       if (err.response.status === 500) {
         console.log('Что-то пошло не так')

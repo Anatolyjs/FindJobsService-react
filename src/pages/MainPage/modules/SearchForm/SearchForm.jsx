@@ -15,8 +15,8 @@ export const SearchForm = ({onFilterApplied, callback, keyword, setKeyword}) => 
       <div className={styles.icon}>
         <img src={searchIcon} alt="searchIcon" />
       </div>
-      <input value={keyword} onChange={onInputChange} placeholder="Введите название вакансии" />
-      <button onClick={onFormSubmit} className={styles.button}>Поиск</button>
+      <input data-elem='search-input' value={keyword} onChange={onInputChange} placeholder="Введите название вакансии" />
+      <button data-elem='search-button' onClick={onFormSubmit} className={styles.button}>Поиск</button>
     </div>
   );
 };

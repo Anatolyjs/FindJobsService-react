@@ -52,10 +52,12 @@ export const Vacancy = ({ vacancy }) => {
   }
 
   return (
-    <article onClick={onVacancyClick} className={styles.vacancy}>
+    <article data-elem={`vacancy-${id}`} onClick={onVacancyClick} className={styles.vacancy}>
       <div className={styles.header}>
         <h2 className={styles.name}>{profession}</h2>
-        <FavoriteStar isActiveStar={isFavorite} callBack={onStarClick} />
+        <div className={styles.favoriteStar}>
+          <FavoriteStar dataElem={`vacancy-${id}-shortlist-button`} isActiveStar={isFavorite} callBack={onStarClick} />
+        </div>
       </div>
       <div className={styles.body}>
         <div className={styles.salary}>з/п {salary}</div>

@@ -1,6 +1,6 @@
 import styles from './SalaryInput.module.scss';
 
-export const SalaryInput = ({ isPaymentFrom, payment, setPayment}) => {
+export const SalaryInput = ({ dataElem, isPaymentFrom, payment, setPayment}) => {
     const amountStep = 1000;
     const placeholder = isPaymentFrom ? 'От' : 'До';
 
@@ -22,7 +22,7 @@ export const SalaryInput = ({ isPaymentFrom, payment, setPayment}) => {
     }
 
     return <div className={styles.salaryInput}>
-        <input type='number' value={payment} onChange={onInputChange} placeholder={placeholder} className={styles.input}/>
+        <input data-elem={dataElem} type='number' value={payment} onChange={onInputChange} placeholder={placeholder} className={styles.input}/>
         <div onClick={increasePayment} className={styles.buttonIncrease} />
         <div onClick={decreasePayment}  className={styles.buttonDecrease} />
     </div>

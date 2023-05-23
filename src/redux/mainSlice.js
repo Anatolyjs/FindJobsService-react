@@ -105,7 +105,7 @@ const toolkitSlice = createSlice({
             state.isLoading = true;
         },
         [fetchDefaultData.fulfilled]: (state, action) => {
-            if (state.favorite.length) {
+            if (state.favorite?.length) {
                 state.vacancies = action.payload.vacancies.objects.map((vacancy) => {
                     state.favorite.forEach((favoriteVacancy) => {
                         if (vacancy.id === favoriteVacancy.id) {

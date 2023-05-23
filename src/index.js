@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import './index.scss';
+import './index.css';
 import App from './App';
 import { store } from './redux';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/FindJobService-react'>
     <Provider store={store}>
       <App />
     </Provider>

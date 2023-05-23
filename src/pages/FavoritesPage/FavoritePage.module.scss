@@ -8,3 +8,20 @@
     max-width: 773px;
     width: 100%;
 }
+.button {
+    margin-top: 32px;
+    background-color: #DEECFF;
+    padding: 10px 24px;
+    border-radius: 8px;
+    width: 164px;
+    margin: 32px auto 0;
+    a {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        color: #3B7CD3;
+    }
+}
+.emptyPage {
+    text-align: center;
+}

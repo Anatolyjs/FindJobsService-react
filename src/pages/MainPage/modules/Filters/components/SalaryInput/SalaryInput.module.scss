@@ -1,0 +1,67 @@
+.salaryInput {
+    width: 100%;
+    position: relative;
+}
+.input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #D5D6DC;
+    padding: 11px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    position: relative;
+    transition: all .2s ease;
+    &::placeholder {
+        color: #ACADB9;
+    }
+    &:focus {
+        border: 1px solid #5E96FC;
+    }
+}
+.buttonIncrease {
+    position: absolute;
+    top: 30%;
+    right: 25px;
+    cursor: pointer;
+    &::before, &::after {
+        content: '';
+        width: 7px;
+        height: 2px;
+        background-color: #ACADB9;
+        position: absolute;
+        top: 0;
+        border-radius: 5px;
+        transition: all .2s ease;
+    }
+    &::before {
+        transform: rotate(42deg);
+        left: 4px;
+    }
+    &::after {
+        transform: rotate(-42deg);
+    }
+}
+.buttonDecrease {
+    position: absolute;
+    bottom: 30%;
+    right: 25px;
+    cursor: pointer;
+    &::before, &::after {
+        content: '';
+        width: 7px;
+        height: 2px;
+        background-color: #ACADB9;
+        position: absolute;
+        top: 0;
+        border-radius: 5px;
+        transition: all .2s ease;
+    }
+    &::before {
+        transform: rotate(-42deg);
+        left: 4px;
+    }
+    &::after {
+        transform: rotate(42deg);
+    }
+}

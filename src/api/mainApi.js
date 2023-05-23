@@ -34,16 +34,28 @@ export const getToken = async () => {
   }
 };
 
-export const getVacancies = async (currentPage = 0, rejectedWithValue) => {
+export const getVacancies = async (params, rejectedWithValue) => {
   const pageSize = 4;
+  let { page = 0, paymentTo, paymentFrom, catalog } = params;
+  let { keyword } = params;
+  let noAgreement = '';
+
+  keyword = keyword.trim();
+
+  if (Number(paymentFrom) || Number(paymentTo)) {
+    noAgreement = 1;
+  }
+
+  const queryString = `published=1&page=${page}&count=${pageSize}${paymentFrom && `&payment_from=${paymentFrom}`}${paymentTo && `&payment_to=${paymentTo}`}${noAgreement && `&no_agreement=${noAgreement}`}${keyword && `&keyword=${keyword}`}${catalog && `&catalogues=${catalog}`}`;
   try {
-    const result = await instance.get(`vacancies/?page=${currentPage}&count=${pageSize}`);
+    const result = await instance.get(`vacancies/?${queryString}`);
 
     if (result.status !== 200) {
       throw new Error('Что-то пошло не так');
     }
-    return result.data.objects;
+    return result.data;
   } catch (err) {
+    console.log(err)
     return rejectedWithValue(err.message);
   }
 
@@ -63,23 +75,33 @@ export const getVacancy = async (id, rejectedWithValue) => {
   }
 }
 
-export const getDefaultData = async (currentPage = 0, rejectedWithValue) => {
+export const getDefaultData = async (params, rejectedWithValue) => {
+
   const pageSize = 4;
+  let { page = 0, paymentTo, paymentFrom, catalog } = params;
+  let { keyword } = params;
+  let noAgreement = '';
   let vacancies, catalogues;
 
-  const cataloguesResult = instance.get("catalogues");
-  const vacanciesResult = instance.get(`vacancies/?page=${currentPage}&count=${pageSize}`);
+  keyword = keyword.trim();
 
-  
+  if (Number(paymentFrom) || Number(paymentTo)) {
+    noAgreement = 1;
+  }
+
+  const queryString = `published=1&page=${page}&count=${pageSize}${paymentFrom && `&payment_from=${paymentFrom}`}${paymentTo && `&payment_to=${paymentTo}`}${noAgreement && `&no_agreement=${noAgreement}`}${keyword && `&keyword=${keyword}`}${catalog && `&catalogues=${catalog}`}`;
+  const cataloguesResult = instance.get("catalogues");
+  const vacanciesResult = instance.get(`vacancies/?${queryString}`);
+
 
   await Promise.all([cataloguesResult, vacanciesResult])
-  .then((values) => { 
-    catalogues = values[0].data;
-    vacancies = values[1].data.objects
-  }, (err) => {
-    if (err.response.status === 500) {
-      console.log('Что-то пошло не так')
-    }
-  })
+    .then((values) => {
+      catalogues = values[0].data;
+      vacancies = values[1].data.objects
+    }, (err) => {
+      if (err.response.status === 500) {
+        console.log('Что-то пошло не так')
+      }
+    })
   return { catalogues, vacancies }
 }

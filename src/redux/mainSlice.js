@@ -20,11 +20,18 @@ const toolkitSlice = createSlice({
     name: "mainSlice",
     initialState: {
         vacancies: null,
+        totalVacancies: 0,
         catalogues: null,
         favorite: null,
         isLoading: true,
         currentVacanciesPage: 0,
         currentFavoritePage: 0,
+        filters: {
+            paymentFrom: '',
+            paymentTo: '',
+            keyword: '',
+            catalog: '',
+        },
         vacancy: null,
         error: null,
         errorMessage: 'Что-то пошло не так. Попробуйте чуть позже'
@@ -54,6 +61,9 @@ const toolkitSlice = createSlice({
                         return item;
                     })
 
+                    if (state.vacancy) {
+                        state.vacancy.isFavorite = true;
+                    }
                 } else {
                     if (state.vacancy) {
                         state.vacancy.isFavorite = true;
@@ -75,6 +85,19 @@ const toolkitSlice = createSlice({
         },
         toggleLoader(state, action) {
             state.isLoading = action.payload;
+        },
+        setFilters(state, action) {
+            state.filters = action.payload;
+        },
+        clearFilters(state) {
+            const filters = {
+                paymentFrom: '',
+                paymentTo: '',
+                keyword: '',
+                catalog: '',
+            }
+            state.filters = filters;
+            state.currentVacanciesPage = 0;
         }
     },
     extraReducers: {
@@ -102,7 +125,7 @@ const toolkitSlice = createSlice({
         },
         [fetchVacancies.fulfilled]: (state, action) => {
             if (state.favorite.length) {
-                state.vacancies = action.payload.map((vacancy) => {
+                state.vacancies = action.payload.objects.map((vacancy) => {
                     state.favorite.forEach((favoriteVacancy) => {
                         if (vacancy.id === favoriteVacancy.id) {
                             vacancy.isFavorite = true;
@@ -111,8 +134,9 @@ const toolkitSlice = createSlice({
                     return vacancy;
                 })
             } else {
-                state.vacancies = action.payload;
+                state.vacancies = action.payload.objects;
             }
+            state.totalVacancies = action.payload.total;
             state.isLoading = false;
         },
         [fetchVacancy.pending]: (state) => {
@@ -136,4 +160,4 @@ const toolkitSlice = createSlice({
 
 export default toolkitSlice.reducer;
 
-export const { setVacancies, toggleFavorite, setFavoriteFromStorage, setCurrentVacanciesPage, setVacancy, toggleLoader } = toolkitSlice.actions;
+export const { clearFilters, setVacancies, toggleFavorite, setFavoriteFromStorage, setCurrentVacanciesPage, setVacancy, toggleLoader, setFilters } = toolkitSlice.actions;

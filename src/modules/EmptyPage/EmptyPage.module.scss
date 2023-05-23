@@ -1,6 +1,6 @@
 .emptyPage {
     width: 100%;
-    height: 100%;
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,16 +18,4 @@
     line-height: 29px;
     color: #343A40;
     margin-top: 32px;
-}
-.button {
-    margin-top: 32px;
-    background-color: #DEECFF;
-    padding: 10px 24px;
-    border-radius: 8px;
-    a {
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 21px;
-        color: #3B7CD3;
-    }
 }

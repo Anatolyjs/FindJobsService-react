@@ -1,0 +1,27 @@
+.button {
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ACADB9;
+    padding-right: 17px;
+    position: relative;
+    &::before, &::after {
+        content: '';
+        width: 10px;
+        height: 1.5px;
+        background-color: #ACADB9;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        z-index: 10;
+    }
+    &::before {
+        content: '';
+        transform: translateY(-50%) rotate(45deg);
+    }
+    &::after {
+        content: '';
+        transform: translateY(-50%) rotate(135deg);
+    }
+}

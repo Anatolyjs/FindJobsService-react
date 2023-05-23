@@ -7,9 +7,6 @@ export const EmptyPage = () => {
     <section className={styles.emptyPage}>
       <img className={styles.image} src={emptyMan} alt="emptyMan"/>
         <div className={styles.text}>Упс, здесь еще ничего нет!</div>
-        <div className={styles.button}>
-            <NavLink to='/vacancies'>Поиск Вакансий</NavLink>
-        </div>
     </section>
   );
 };

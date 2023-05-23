@@ -1,9 +1,51 @@
 .filters {
     max-width: 315px;
-    max-height: 360px;
+    align-self: flex-start;
     width: 100%;
     background-color: #fff;
     padding: 20px;
     border: 1px solid #EAEBED;
     border-radius: 12px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.body {
+    margin-top: 32px;
+}
+.title {
+    color: #232134;
+    font-size: 20px;
+    font-weight: 700;
+}
+.itemTitle {
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #232134;
+    font-size: 16px;
+    line-height: 20px;
+}
+.salary {
+    margin-top: 20px;
+}
+.inputMin {
+    margin-bottom: 8px;
+}
+.button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-radius: 5px;
+    background-color: #5E96FC;
+    color: #fff;
+    transition: all .2s ease;
+    line-height: 20px;
+    &:hover {
+        background-color: #92C1FF;
+    }
+    &:active {
+        background-color: #3B7CD3;
+    }
 }

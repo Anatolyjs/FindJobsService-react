@@ -7,14 +7,20 @@ import "./App.scss";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { FavoritePage } from "./pages/FavoritesPage/FavoritePage";
 import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
-import { getToken, setHeaders } from "./api/mainApi";
+import { getToken, instance, setHeaders } from "./api/mainApi";
 import { setFavoriteFromStorage } from "./redux/mainSlice";
-
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
+    const fetchinfo = async () => {
+      // const result = await instance.get(
+      //   `/vacancies/?published=1&catalogues=1&payment_from=100000&no_agreement=1`
+      // );
+      // console.log(result);
+    };
+    fetchinfo();
+    const token = localStorage.getItem("access_token");
     dispatch(setFavoriteFromStorage());
     if (!token) {
       getToken();
@@ -24,7 +30,6 @@ function App() {
   }, []);
 
   return (
-
     <>
       <Routes>
         <Route path="/" element={<Layout />}>

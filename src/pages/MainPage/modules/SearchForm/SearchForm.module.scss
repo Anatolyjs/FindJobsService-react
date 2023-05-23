@@ -24,4 +24,11 @@
     background-color: #5E96FC;
     color: #FFF;
     font-weight: 500;
+    transition: all .2s ease;
+    &:hover {
+        background-color: #92C1FF;
+    }
+    &:active {
+        background-color: #3B7CD3;
+    }
 }

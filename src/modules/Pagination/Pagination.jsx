@@ -12,7 +12,7 @@ export const Pagination = ({ pageCount, callbackFun, initialPage }) => {
         onPageChange={callbackFun}
         pageRangeDisplayed={2}
         pageCount={pageCount}
-        initialPage={initialPage}
+        forcePage={initialPage}
         previousLabel={<BtnArrowPrev />}
         renderOnZeroPageCount={null}
         containerClassName="pagination"

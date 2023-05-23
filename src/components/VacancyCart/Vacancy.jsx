@@ -26,7 +26,11 @@ export const Vacancy = ({ vacancy }) => {
     salary = `${payment_from} - ${payment_to} ${currency}`;
   }
 
-  if (!payment_from && !payment_to) {
+  if (payment_from === 0 && payment_to === 0) {
+    salary = `по договоренности`;
+  }
+
+  if (isNaN(payment_from) && isNaN(payment_to)) {
     salary = `не указана`;
   }
 

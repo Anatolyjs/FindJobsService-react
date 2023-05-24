@@ -1,6 +1,5 @@
-import { NavLink } from "react-router-dom";
-import styles from "./EmptyPage.module.scss";
 import emptyMan from "./assets/img/emptyMan.svg";
+import styles from "./EmptyPage.module.scss";
 
 export const EmptyPage = () => {
   return (

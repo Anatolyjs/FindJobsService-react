@@ -1,4 +1,3 @@
-import styles from './BtnArrow.scss';
 
 export const BtnArrowNext = () => <div className="btnArrowNext"></div>
 

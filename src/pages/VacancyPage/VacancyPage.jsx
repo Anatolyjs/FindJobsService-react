@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { Loader } from "../../components/Loader/Loader";
-import styles from "./VacancyPage.module.scss";
-
-import { fetchVacancy, toggleLoader } from "../../redux/mainSlice";
+import { fetchVacancy } from "../../redux/mainSlice";
 import { Card } from "./components/Card/Card";
 import { Description } from "./components/Description/Description";
+
+import styles from "./VacancyPage.module.scss";
 
 export const VacancyPage = () => {
   const vacancy = useSelector((state) => state.main.vacancy);

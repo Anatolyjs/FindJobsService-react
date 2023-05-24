@@ -1,13 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
-
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 import { EmptyPage } from "../../modules/EmptyPage/EmptyPage";
 import { VacanciesList } from "../../modules/VacanciesList/VacanciesList";
-import styles from "./FavoritePage.module.scss";
 import { Pagination } from "../../modules/Pagination/Pagination";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+
+import styles from "./FavoritePage.module.scss";
+
 
 export const FavoritePage = () => {
   const favorite = useSelector((state) => state.main.favorite);
@@ -38,16 +39,6 @@ export const FavoritePage = () => {
   if (favorite?.length) {
     currentVacancies = getCurrentArr(favorite, pageSize, activePage);
   }
-
-  // if (favorite?.length) {
-
-  //   const startIndex = (activePage - 1) * pageSize;
-  //   let endIndex = startIndex + pageSize - 1;
-  //   if (endIndex >= favorite?.length) {
-  //     endIndex = favorite.length - 1;
-  //   }
-  //   currentVacancies = favorite.slice(startIndex, endIndex + 1);
-  // }
 
   const onPageChange = (event) => {
     const pageNumber = event.selected;

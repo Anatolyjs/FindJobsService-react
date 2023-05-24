@@ -8,5 +8,5 @@ export const Option = ({activeOption, text, value, callback}) => {
     }
     const isActiveClass = activeOption?.title === text ? styles.option_active : '';
     
-    return <div onClick={onOptionClick} className={cn(styles.option, isActiveClass)}>{text}</div>
+    return <li onClick={onOptionClick} className={cn(styles.option, isActiveClass)}>{text}</li>
 }

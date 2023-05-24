@@ -32,7 +32,7 @@ export const IndustrySelect = ({
     />
   ));
   const isOptionsActive = isActiveSelect && (
-    <div className={styles.optionsContainer}>{industryList}</div>
+    <ul className={styles.optionsContainer}>{industryList}</ul>
   );
   const initialSelectOption = selectedOption?.title || "Выберите отрасль";
 
@@ -51,11 +51,7 @@ export const IndustrySelect = ({
   }, [ref]);
 
   return (
-    <div
-      ref={ref}
-      onClick={onSelectClick}
-      className={cn( styles.industrySelect, isActiveSelect && styles.industrySelect_active )}
-    >
+    <div ref={ref} onClick={onSelectClick} className={cn( styles.industrySelect, isActiveSelect && styles.industrySelect_active )}>
       <div className={cn(styles.select, selectedOption && styles.select_selected)} >
         {initialSelectOption}
         <div className={styles.arrows}></div>

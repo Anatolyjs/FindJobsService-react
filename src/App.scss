@@ -4,11 +4,13 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #F5F5F5;
 }
 .app {
     display: flex;
     flex-direction: column;
     min-height: 900px;
+    
 }
 .container {
     max-width: 1136px;
@@ -26,4 +28,19 @@ body {
 }
 .active {
     color: #5E96FC;
+}
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+    &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+        display: none;
+    }
+}
+li {
+    list-style-type:  none;
 }

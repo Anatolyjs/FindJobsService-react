@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 import { Layout } from "./modules/Layout/Layout";
@@ -7,27 +7,31 @@ import "./App.scss";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { FavoritePage } from "./pages/FavoritesPage/FavoritePage";
 import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
-import { getToken, instance, setHeaders } from "./api/mainApi";
-import { setFavoriteFromStorage } from "./redux/mainSlice";
+import { fetchToken, setDataFromStorage } from "./redux/mainSlice";
+import { useLayoutEffect } from "react";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    const fetchinfo = async () => {
-      // const result = await instance.get(
-      //   `/vacancies/?published=1&catalogues=1&payment_from=100000&no_agreement=1`
-      // );
-      // console.log(result);
-    };
-    fetchinfo();
-    const token = localStorage.getItem("access_token");
-    dispatch(setFavoriteFromStorage());
-    if (!token) {
-      getToken();
-    } else {
-      setHeaders(token);
-    }
+  const authorization = useSelector(state => state.main.authorization);
+  const state = useSelector(state => state);
+
+  useLayoutEffect(() => {
+    dispatch(setDataFromStorage());
   }, []);
+
+  useEffect(() => {
+    if (!authorization) {
+      return;
+    }
+    if (authorization === 'empty') {
+      dispatch(fetchToken());
+    } else {
+      const dateNow = Date.now() / 1000;
+      if (authorization.ttl < dateNow) {
+        dispatch(fetchToken());
+      }
+    }
+  }, [authorization]);
 
   return (
     <>

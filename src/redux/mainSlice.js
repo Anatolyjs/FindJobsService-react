@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getDefaultData, getVacancies, getVacancy } from "../api/mainApi";
+import { getDefaultData, getToken, getVacancies, getVacancy, setHeaders } from "../api/mainApi";
 
 export const fetchDefaultData = createAsyncThunk(
     'mainSlice/fetchDefaultData',
@@ -16,6 +16,11 @@ export const fetchVacancy = createAsyncThunk(
     getVacancy
 )
 
+export const fetchToken = createAsyncThunk(
+    'mainSlice/fetchToken',
+    getToken
+)
+
 const toolkitSlice = createSlice({
     name: "mainSlice",
     initialState: {
@@ -25,7 +30,7 @@ const toolkitSlice = createSlice({
         favorite: null,
         isLoading: true,
         currentVacanciesPage: 0,
-        currentFavoritePage: 0,
+        authorization: null,
         filters: {
             paymentFrom: '',
             paymentTo: '',
@@ -38,6 +43,7 @@ const toolkitSlice = createSlice({
     },
     reducers: {
         toggleFavorite(state, action) {
+            
             const vacancyFavorite = state.favorite.find(vacancy => vacancy.id === action.payload);
 
             if (vacancyFavorite) {
@@ -74,8 +80,17 @@ const toolkitSlice = createSlice({
 
             localStorage.setItem('favorite', JSON.stringify(state.favorite));
         },
-        setFavoriteFromStorage(state) {
-            state.favorite = JSON.parse(localStorage.getItem('favorite'));
+        setDataFromStorage(state) {
+            const favorite = JSON.parse(localStorage.getItem('favorite'));
+            state.favorite = favorite || [];
+            const Authorization = JSON.parse(localStorage.getItem('access_token'));
+            if (Authorization) {
+                state.authorization = Authorization;
+                setHeaders(Authorization.access_token);
+            }
+            else {
+                state.authorization = 'empty';
+            }
         },
         setCurrentVacanciesPage(state, action) {
             state.currentVacanciesPage = action.payload;
@@ -125,7 +140,7 @@ const toolkitSlice = createSlice({
             state.isLoading = true;
         },
         [fetchVacancies.fulfilled]: (state, action) => {
-            if (state.favorite.length) {
+            if (state.favorite?.length) {
                 state.vacancies = action.payload.objects.map((vacancy) => {
                     state.favorite.forEach((favoriteVacancy) => {
                         if (vacancy.id === favoriteVacancy.id) {
@@ -144,7 +159,7 @@ const toolkitSlice = createSlice({
             state.isLoading = true;
         },
         [fetchVacancy.fulfilled]: (state, action) => {
-            if (state.favorite.length) {
+            if (state.favorite?.length) {
                 state.favorite.forEach((favoriteVacancy) => {
                     if (action.payload.id === favoriteVacancy.id) {
                         action.payload.isFavorite = true;
@@ -155,10 +170,19 @@ const toolkitSlice = createSlice({
             } 
             state.vacancy = action.payload;
             state.isLoading = false;
+        },
+        [fetchToken.fulfilled]: (state, action) => {
+            const access_token = {
+                ttl: action.payload.ttl,
+                access_token: action.payload.access_token
+            }
+            state.authorization = access_token;
+            setHeaders(access_token.access_token);
+            localStorage.setItem("access_token", JSON.stringify(access_token));
         }
     }
 });
 
 export default toolkitSlice.reducer;
 
-export const { clearFilters, setVacancies, toggleFavorite, setFavoriteFromStorage, setCurrentVacanciesPage, setVacancy, toggleLoader, setFilters } = toolkitSlice.actions;
+export const { clearFilters, setVacancies, toggleFavorite, setDataFromStorage, setCurrentVacanciesPage, setVacancy, toggleLoader, setFilters } = toolkitSlice.actions;

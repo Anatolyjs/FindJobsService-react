@@ -25,8 +25,7 @@ export const getToken = async () => {
     const result = await instance.post('oauth2/password/', params);
 
     if (result.status === 200) {
-      localStorage.setItem('access_token', result.data.access_token);
-      setHeaders(result.data.access_token);
+      return result.data;
     }
 
   } catch (err) {
@@ -77,7 +76,6 @@ export const getVacancy = async (id, rejectedWithValue) => {
 }
 
 export const getDefaultData = async (params, rejectedWithValue) => {
-
   const pageSize = 4;
   let { page = 0, paymentTo, paymentFrom, catalog } = params;
   let { keyword } = params;

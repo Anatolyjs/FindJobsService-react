@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/FindJobsService-react/static/css/main.2806211e.css",
-    "main.js": "/FindJobsService-react/static/js/main.a0b44cb3.js",
+    "main.css": "/FindJobsService-react/static/css/main.6c370f9b.css",
+    "main.js": "/FindJobsService-react/static/js/main.1498d324.js",
     "static/media/emptyMan.svg": "/FindJobsService-react/static/media/emptyMan.22db230a4105e02baee120640385d613.svg",
     "index.html": "/FindJobsService-react/index.html",
     "static/media/FavoriteStarFullfilled.svg": "/FindJobsService-react/static/media/FavoriteStarFullfilled.236bfce70d49d07c246e72b8d18094c4.svg",
@@ -9,11 +9,11 @@
     "static/media/location.svg": "/FindJobsService-react/static/media/location.f8ff386938b51a2897c396f654d24225.svg",
     "static/media/logo.svg": "/FindJobsService-react/static/media/logo.7e07a45d78062ef26fb8e6481d8c6e0c.svg",
     "static/media/searchIcon.svg": "/FindJobsService-react/static/media/searchIcon.06548291525b262aaf6bfddeb6eee7ea.svg",
-    "main.2806211e.css.map": "/FindJobsService-react/static/css/main.2806211e.css.map",
-    "main.a0b44cb3.js.map": "/FindJobsService-react/static/js/main.a0b44cb3.js.map"
+    "main.6c370f9b.css.map": "/FindJobsService-react/static/css/main.6c370f9b.css.map",
+    "main.1498d324.js.map": "/FindJobsService-react/static/js/main.1498d324.js.map"
   },
   "entrypoints": [
-    "static/css/main.2806211e.css",
-    "static/js/main.a0b44cb3.js"
+    "static/css/main.6c370f9b.css",
+    "static/js/main.1498d324.js"
   ]
 }

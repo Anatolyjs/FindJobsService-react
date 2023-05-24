@@ -15,6 +15,9 @@
         &::placeholder {
             color: #ACADB9;
         }
+        @media (max-width: 480px) {
+            font-size: 13px;
+        }
     }
 }
 .button {

@@ -40,3 +40,11 @@
     color: #232134;
     font-weight: 700;
 }
+@media (max-width: 568px) {
+    .name {
+        font-size: 22px;
+    }
+    .body {
+        font-size: 17px;
+    }
+}

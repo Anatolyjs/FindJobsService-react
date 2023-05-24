@@ -2,16 +2,12 @@
     margin: 20px 0 7px;
     padding: 24px;
     width: 100%;
-    min-height: 548px;
     background-color: #fff;
     border-radius: 12px;
     p {
         font-size: 16px;
         margin-bottom: 20px;
         line-height: 20px;
-        li {
-            font-size: 16px;
-        }
     }
     b {
         font-size: 20px;
@@ -36,6 +32,14 @@
             top: 10px;
             left: 0;
 
+        }
+    }
+    @media (max-width: 568px) {
+        b {
+            font-size: 18px;
+        }
+        p {
+            font-size: 14px;
         }
     }
 }

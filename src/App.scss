@@ -25,6 +25,9 @@ body {
     flex-grow: 1;
     background-color: #F5F5F5;
     padding: 40px 0 44px;
+    @media (max-width: 576px) {
+        padding: 20px 0 44px;
+    }
 }
 .active {
     color: #5E96FC;

@@ -24,3 +24,14 @@
         margin-right: 0;
     }
 }
+@media (max-width: 576px) {
+    .header, .list {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .item {
+        margin: 0;
+        font-size: 20px;
+    }
+}

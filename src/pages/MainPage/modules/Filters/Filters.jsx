@@ -31,7 +31,7 @@ export const Filters = ({onFilterApplied, clearAll, setSelectedOption, selectedO
             <SalaryInput dataElem='salary-to-input' isPaymentFrom={false} payment={paymentTo} setPayment={setPaymentTo}/>
           </div>
         </div>
-        <button onClick={onButtonClick} className={styles.button}>Применить</button>
+        <button data-elem='search-button' onClick={onButtonClick} className={styles.button}>Применить</button>
       </div>
     </div>
   );

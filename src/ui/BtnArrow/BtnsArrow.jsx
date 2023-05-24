@@ -1,3 +1,4 @@
+import './BtnArrow.scss';
 
 export const BtnArrowNext = () => <div className="btnArrowNext"></div>
 

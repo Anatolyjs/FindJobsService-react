@@ -41,6 +41,14 @@ export const getVacancies = async (params, rejectedWithValue) => {
 
   keyword = keyword.trim();
 
+  if (paymentFrom < 0) {
+    paymentFrom = 0
+  }
+
+  if (paymentTo < 0) {
+    paymentTo = 0
+  }
+
   if (Number(paymentFrom) || Number(paymentTo)) {
     noAgreement = 1;
   }

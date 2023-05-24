@@ -1,19 +1,20 @@
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 import { Layout } from "./modules/Layout/Layout";
-import "./App.scss";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { FavoritePage } from "./pages/FavoritesPage/FavoritePage";
 import { VacancyPage } from "./pages/VacancyPage/VacancyPage";
 import { fetchToken, setDataFromStorage } from "./redux/mainSlice";
-import { useLayoutEffect } from "react";
+
+import "./App.scss";
+
 
 function App() {
   const dispatch = useDispatch();
   const authorization = useSelector(state => state.main.authorization);
-  const state = useSelector(state => state);
 
   useLayoutEffect(() => {
     dispatch(setDataFromStorage());

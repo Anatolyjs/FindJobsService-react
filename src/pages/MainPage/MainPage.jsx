@@ -8,8 +8,8 @@ import { Filters } from "./modules/Filters/Filters";
 import { SearchForm } from "./modules/SearchForm/SearchForm";
 import { Loader } from "../../components/Loader/Loader";
 import { EmptyPage } from "../../modules/EmptyPage/EmptyPage";
-
 import { clearFilters, fetchDefaultData, fetchVacancies, setCurrentVacanciesPage, setFilters } from "../../redux/mainSlice";
+
 import styles from "./MainPage.module.scss";
 
 
@@ -45,7 +45,6 @@ export const MainPage = () => {
       dispatch(fetchVacancies({ ...params, page: currentVacanciesPage }));
     }
  
-    // const isUndefinedOption = isNaN(selectedOption) ? "" : selectedOption;
     dispatch(setFilters({ ...params, catalog: selectedOption }));
     dispatch(fetchVacancies({ ...params, page: currentVacanciesPage }));
     dispatch(setCurrentVacanciesPage(0));

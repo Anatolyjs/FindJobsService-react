@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
-import styles from "./Vacancy.module.scss";
 import { CityName } from "../../ui/CityName/CityName";
 import { FavoriteStar } from "../../ui/FavoritesStar/FavoriteStar";
 import { useDispatch } from "react-redux";
 import { setVacancy, toggleFavorite } from "../../redux/mainSlice";
 
+import styles from "./Vacancy.module.scss";
 
 export const Vacancy = ({ vacancy }) => {
   let salary;

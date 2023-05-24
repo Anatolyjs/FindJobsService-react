@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+
 import styles from "./Filters.module.scss";
 import { IndustrySelect } from "./components/IndustrySelect/IndustrySelect";
 import { ClearButton } from "./ui/ClearButton/ClearButton";

@@ -6,17 +6,14 @@ import { Option } from "./Option";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-export const IndustrySelect = ({
-  setSelectedOption,
-  selectedOption,
-  catalogues,
-}) => {
+export const IndustrySelect = ({ setSelectedOption, selectedOption, catalogues }) => {
   const [isActiveSelect, setIsActiveSelect] = useState(false);
 
   const ref = useRef(null);
 
   const onOptionClick = (catalog) => {
     setSelectedOption(catalog);
+    setIsActiveSelect(false);
   };
   const onSelectClick = () => {
     setIsActiveSelect(!isActiveSelect);
@@ -31,9 +28,7 @@ export const IndustrySelect = ({
       text={item.title}
     />
   ));
-  const isOptionsActive = isActiveSelect && (
-    <ul className={styles.optionsContainer}>{industryList}</ul>
-  );
+
   const initialSelectOption = selectedOption?.title || "Выберите отрасль";
 
   useEffect(() => {
@@ -42,21 +37,19 @@ export const IndustrySelect = ({
         setIsActiveSelect(false);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [ref]);
 
   return (
-    <div ref={ref} onClick={onSelectClick} className={cn( styles.industrySelect, isActiveSelect && styles.industrySelect_active )}>
-      <div className={cn(styles.select, selectedOption && styles.select_selected)} >
+    <div data-elem="industry-select" ref={ref} onClick={onSelectClick} className={cn( styles.industrySelect, isActiveSelect && styles.industrySelect_active)}>
+      <div className={cn(styles.select, selectedOption && styles.select_selected)}>
         {initialSelectOption}
         <div className={styles.arrows}></div>
       </div>
-      {isOptionsActive}
+      <div className={cn(styles.optionsContainer)}>{industryList}</div>
     </div>
   );
 };

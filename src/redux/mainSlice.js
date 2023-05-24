@@ -37,9 +37,7 @@ const toolkitSlice = createSlice({
             keyword: '',
             catalog: '',
         },
-        vacancy: null,
-        error: null,
-        errorMessage: 'Что-то пошло не так. Попробуйте чуть позже'
+        vacancy: null
     },
     reducers: {
         toggleFavorite(state, action) {

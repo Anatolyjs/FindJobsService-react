@@ -2,8 +2,8 @@ import ReactPaginate from "react-paginate";
 import { useEffect } from "react";
 import { useState } from "react";
 
-import "./Pagination.scss";
 import { BtnArrowNext, BtnArrowPrev } from "../../ui/BtnArrow/BtnsArrow";
+import "./Pagination.scss";
 
 
 export const Pagination = ({ pageCount, callbackFun, initialPage }) => {
@@ -18,15 +18,12 @@ export const Pagination = ({ pageCount, callbackFun, initialPage }) => {
   }
 
   useEffect(() => {
-
     if (window.innerWidth > 480) {
       setPagesRange(2)
     } else {
       setPagesRange(1);
     }
-    
     window.addEventListener('resize', widthChanhed);
-
     return () => {
       window.removeEventListener('resize', widthChanhed);
     }

@@ -5,6 +5,7 @@ import styles from "./IndustrySelect.module.scss";
 import { Option } from "./Option";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { useMemo } from "react";
 
 export const IndustrySelect = ({ setSelectedOption, selectedOption, catalogues }) => {
   const [isActiveSelect, setIsActiveSelect] = useState(false);
@@ -19,7 +20,7 @@ export const IndustrySelect = ({ setSelectedOption, selectedOption, catalogues }
     setIsActiveSelect(!isActiveSelect);
   };
 
-  const industryList = catalogues.map((item) => (
+  const industryList = useMemo(() => catalogues.map((item) => (
     <Option
       activeOption={selectedOption}
       callback={onOptionClick}
@@ -27,7 +28,7 @@ export const IndustrySelect = ({ setSelectedOption, selectedOption, catalogues }
       value={item.key}
       text={item.title}
     />
-  ));
+  )), [catalogues]);
 
   const initialSelectOption = selectedOption?.title || "Выберите отрасль";
 
